@@ -1,0 +1,21 @@
+// Place all the styles related to the static_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.about {
+  .background {
+    background-image: asset-url("coffee-book.png");
+    height: calc(100vh - 52px);
+    width: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .short-underline {
+    width: 50px;
+    border-bottom: 2px solid steelblue;
+  }
+}
