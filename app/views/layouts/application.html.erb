@@ -12,7 +12,9 @@
     <div id="header">
       <%= render partial: 'partials/header' %>
     </div>
-    <%= yield %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
     <div id="footer">
       <%= render partial: 'partials/footer' %>
     </div>
