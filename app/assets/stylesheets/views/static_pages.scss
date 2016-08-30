@@ -18,4 +18,23 @@
     width: 50px;
     border-bottom: 2px solid steelblue;
   }
+
+  .background2 {
+    background-color: goldenrod;
+  }
+  .Icon-container {
+    margin: 50px 0;
+  }
+  .Icons {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 50px auto;
+    justify-content: center;
+  }
+  .Icon_ind {
+    margin: 20px 10px;
+    flex: 0 0 280px;
+    color: steelblue;
+  }
 }
