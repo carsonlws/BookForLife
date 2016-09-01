@@ -1,6 +1,33 @@
-<!-- <p id="notice"><%= notice %></p> -->
+<div class="books">
+  <div class="container">
+    <div class="row">
 
-<h1>Books</h1>
+      <div class="col-md-3">
+          <p class="lead">All Books</p>
+          <div class="list-group">
+              <a href="/categories/1" class="list-group-item">Children</a>
+              <a href="/categories/2" class="list-group-item">Fiction</a>
+              <a href="/categories/3" class="list-group-item">Non-Fiction</a>
+          </div>
+      </div>
+
+      <div class="col-md-6">
+        <!-- <div class="thumbnail"> -->
+         <div class="caption-full">
+           <% @books.each do |book| %>
+             <h5><%= link_to book.title, books_path(book) %></h5>
+             <h5><%= link_to book.author, books_path(book) %></h5>
+             <h5><%= link_to book.description, books_path(book) %></h5>
+
+           <% end %>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+      </div>
+        <!-- </div> -->
+      </div>
+
+
+
 
 <table>
   <thead>
@@ -31,3 +58,7 @@
 </table>
 
 <br>
+
+    </div>
+  </div>
+</div>

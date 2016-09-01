@@ -1,9 +1,65 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-3">
+            <p class="lead">Categories</p>
+            <div class="list-group">
+              <% @categories.each do |category| %>
+              <%= link_to category.genre, category_path(category), class: 'list-group-item' %><br />
+              <% end %>
+            </div>
+        </div>
+
+
+        <div class="col-md-9">
+          <div class="row">
+            <p>
+              <strong>Genre:</strong>
+              <%= @category.genre %>
+            </p>
+            <% @category.books.each do |book| %>
+              <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="thumbnail">
+                  <img src="http://placehold.it/320x150" alt="">
+                  <div class="caption">
+                      <%= link_to book.title, book_path(book) %> <br/>
+                      <%= book.author %> <br/>
+                      <%= book.description %> <br/>
+                      RM <%= book.price %> <br/>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Genre:</strong>
-  <%= @category.genre %>
-</p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
+
+<% if @category.books.any? %>
+  <% @category.books.each do |book| %>
+    <%= link_to book.title, book_path(book) %>
+  <% end %>
+<% else %>
+  No books found under this category.
+<% end %>
+
+<%= link_to 'Edit', edit_category_path(@category) %>
 <%= link_to 'Back', categories_path %>
