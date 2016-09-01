@@ -35,6 +35,9 @@ gem "font-awesome-rails"
 gem 'devise'
 gem 'carrierwave'
 gem "mini_magick"
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
+
 
 
 
