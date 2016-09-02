@@ -33,10 +33,18 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass'
 gem "font-awesome-rails"
 gem 'devise'
+gem 'carrierwave'
+gem "mini_magick"
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
+
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  # gem 'byebug', platform: :mri
+  gem 'pry'
 end
 
 group :development do

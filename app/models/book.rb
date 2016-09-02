@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
 
-  has_many :orders, through: :ordered_book
+  has_many :ordered_books
+  has_many :orders, through: :ordered_books
   belongs_to :category
 
 end

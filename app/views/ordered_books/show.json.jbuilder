@@ -1,0 +1,1 @@
+json.partial! "ordered_books/ordered_book", ordered_book: @ordered_book
