@@ -46,6 +46,10 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="/users/sign_up"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 							<li><a href="/users/sign_in"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              <li><%= link_to "Sign in with FB", user_facebook_omniauth_authorize_path %><li>
+
+              <li><%= link_to "Logout", destroy_user_session_path, class: "glyphicon glyphicon-log-in", :method => :delete %><li>
+
 						</ul>
 
 
