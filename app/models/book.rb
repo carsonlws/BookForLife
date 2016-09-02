@@ -5,10 +5,6 @@ class Book < ApplicationRecord
   belongs_to :category
   searchkick
 
-  products = Product.search "apples"
-  products.each do |product|
-    puts product.name
-  end
 
   mount_uploader :image, ImageUploader
 
