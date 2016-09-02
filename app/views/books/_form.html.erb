@@ -21,7 +21,17 @@
     <%= f.text_field :author %>
   </div>
 
-  
+  <div class="field">
+    <div id="preview-image">
+       <% if @book.image? %>
+         <%= image_tag @book.image, class: "img-settings img-responsive center-block" %>
+       <% end %>
+     </div>
+
+    <%= f.label :image %>
+    <%= f.file_field :image, id: "book_image_field", class: 'form-control image-uploader' %>
+  </div>
+
 
   <div class="field">
     <%= f.label :description %>

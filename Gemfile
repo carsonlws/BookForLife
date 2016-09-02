@@ -37,10 +37,9 @@ gem 'carrierwave'
 gem "mini_magick"
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
+gem "fog"
 gem 'omniauth-facebook'
 gem "figaro"
-
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
