@@ -5,6 +5,13 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
+    if params[:query].present?
+        @query = params[:query]
+        @books = Book.search(params[:query], page: params[:page])
+      else
+        @books = Book.all.page params[:page]
+    end
+
   end
 
   # GET /books/1
