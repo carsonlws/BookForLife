@@ -31,5 +31,5 @@
 </p>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
-<%= link_to 'Add To Cart', books_path %>
+<%= link_to 'Back', books_path %> |
+<%= link_to 'Add To Cart', add_item_to_cart_path(book_id: @book, quantity: 1), method: :patch %>

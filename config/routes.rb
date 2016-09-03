@@ -17,4 +17,8 @@ Rails.application.routes.draw do
   root to: 'landing#index'
   get :about, to: 'static_pages#about'
 
+  get :cart, to: 'cart#show'
+  patch :add_item_to_cart, to: 'cart#add_item'
+  delete :clear_cart, to:'cart#clear_cart'
+
 end
