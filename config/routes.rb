@@ -22,10 +22,9 @@ Rails.application.routes.draw do
   patch :add_item_to_cart, to: 'cart#add_item'
   delete :clear_cart, to:'cart#clear_cart'
   delete :remove_book, to:'cart#remove_book'
+  patch :update_book, to: "cart#update_book"
 
-
-  get :shipping, to: 'shipping#index'
-  get :order_confirmation, to: 'shipping#order_confirmation'
+  get :order_confirmation, to: 'addresses#order_confirmation'
 
 
 

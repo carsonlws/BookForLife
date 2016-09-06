@@ -28,7 +28,7 @@ class AddressesController < ApplicationController
 
     respond_to do |format|
       if @address.save
-        format.html { redirect_to @address, notice: 'Address was successfully created.' }
+        format.html { redirect_to addresses_path, notice: 'Address was successfully created.' }
         format.json { render :show, status: :created, location: @address }
       else
         format.html { render :new }
@@ -58,6 +58,20 @@ class AddressesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to addresses_url, notice: 'Address was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def order_confirmation
+
+    @cart = JSON.parse cookies[:cart]
+    @books = []
+    @cart.each do |book_id,quantity|
+
+      book = Book.find_by(id: book_id)
+      book.define_singleton_method(:quantity) do
+        quantity
+      end
+      @books << book
     end
   end
 

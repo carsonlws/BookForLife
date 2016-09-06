@@ -1,17 +1,25 @@
 class CartController < ApplicationController
 
-  before_action :read_cart, only: [:show, :add_item, :remove_book]
-  after_action :write_cart, only: [:add_item, :clear_cart, :remove_book]
+  before_action :read_cart, only: [:show, :add_item, :update_book, :remove_book]
+  after_action :write_cart, only: [:add_item, :clear_cart, :update_book, :remove_book]
 
   def show
     @books = []
+    @totalprice = 0
     @cart.each do |book_id,quantity|
 
       book = Book.find_by(id: book_id)
       book.define_singleton_method(:quantity) do
         quantity
       end
+
+      # book.define_singleton_method(:total_price) do
+      #   "%.2f" % (self.price * quantity.to_i)
+      # end
+
       @books << book
+
+      @totalprice += book.price.to_f * book.quantity.to_i
     end
   end
 
@@ -40,18 +48,15 @@ class CartController < ApplicationController
     end
   end
 
+  def update_book
+    if @cart[params[:book_id]]
+      @cart[params[:book_id]] = params[:quantity]
+    end
+    redirect_to cart_path
+  end
+
   def remove_book
     @cart.delete params[:book_id]
     redirect_to cart_path
   end
-
-  # @cart = {
-  #   '5': '999',
-  #   '12': '100'
-  # }
-
-  # request = {
-  #   "item_id": "12",
-  #   "quantity": "5"
-  # }
 end

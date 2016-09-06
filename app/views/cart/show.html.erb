@@ -1,43 +1,61 @@
 <div class="container">
   <div class="col-md-12">
 
-      <% @books.each do |book| %>
-      <div class="row thumbnail">
-          <div class="col-sm-4 col-lg-4 col-md-4">
-              <%= image_tag book.image, class: "list-img" %> <br/>
-          </div>
-        <div class="caption">
-          <div class="col-sm-8 col-lg-8 col-md-8">
-            <%= link_to book.title, book %> <br/>
-            <%= book.author %> <br/>
-            Quantity: <%= book.quantity %> <br/>
-            RM <%= book.price %> <br/>
-            <%= link_to "Remove Book", remove_book_path(book_id: book.id), method: :delete %>
-
-        </div>
+    <% @books.each do |book| %>
+    <div class="row thumbnail">
+      <div class="col-sm-3 col-lg-3 col-md-3">
+        <%= image_tag book.image, class: "list-img" %> <br/>
       </div>
+
+      <div class="caption">
+        <span class="col-sm-3 col-lg-3 col-md-3">
+          <%= label_tag "Book details:", nil, class: "text-left" %> </br>
+          <%= link_to book.title, book %> <br/>
+          <%= book.author %> <br/>
+        </span>
+
+        <span class="col-sm-2 col-lg-2 col-md-2">
+          <%= form_tag update_book_path(book_id: book.id), method: :patch do %>
+          <span class="small-1 large-1 columns pull-left">
+            <%= label_tag "Quantity:", nil, class: "right inline" %>
+          </span>
+          <span class="small-1 large-1 columns pull-left">
+            <%= text_field_tag :quantity, book.quantity %>
+          </span>
+          <span class="small-1 large-1 columns pull-left">
+            <%= submit_tag 'Update', class: "button" %>
+          </span>
+        <%end%>
+        </span>
+
+        <span class="col-sm-2 col-lg-2 col-md-2">
+          <%= label_tag "Price:", nil, class: "text-left" %> </br>
+          <%= number_to_currency(book.price, unit: "RM ") %>
+        </span>
+      </div>
+
+      <span class="col-sm-2 col-lg-2 col-md-2">
+        <%= link_to "Remove Book", remove_book_path(book_id: book.id), method: :delete %>
+      </span>
     </div>
-      <% end %>
+    <% end %>
+
+    <div class ="row">
+    <div class="col-sm-12 col-lg-12 col-md-12 text-right">
+      <%= label_tag "Total Order Price: ", nil, class: "text-left" %>
+      <%= number_to_currency(@totalprice, unit: "RM ") %>
+    </div>
+  </div>
+
   </div>
 </div>
+
+
+
 
 <div class="container">
   <div class="row text-center">
-<%= link_to "Clear cart ", clear_cart_path, method: :delete %>|
-<%= link_to "Checkout", shipping_path %></br>
+    <%= link_to "Clear cart ", clear_cart_path, method: :delete %>|
+    <%= link_to "Pay Now", root_path %></br>
   </div>
 </div>
-
-<% @books.each do |book| %>
-  <div class="col-sm-4 col-lg-4 col-md-4">
-    <div class="thumbnail">
-      <img src="http://placehold.it/320x150" alt="">
-      <div class="caption">
-          <%= link_to book.title, book %> <br/>
-          <%= book.author %> <br/>
-          <%= book.image %> <br/>
-          RM <%= book.price %> <br/>
-      </div>
-    </div>
-  </div>
-<% end %>
