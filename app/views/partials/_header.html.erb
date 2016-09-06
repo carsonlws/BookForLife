@@ -40,8 +40,8 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li>
 								<%= form_tag books_path, class: "navbar-search navbar-form", method: :get do %>
-										<%= label_tag(:query, "Search for:") %>
-  									<%= text_field_tag(:query, @query) %>
+										<%= label_tag(:query, "") %>
+  									<%= text_field_tag(:query, @query, placeholder: "Search 1+ Million Books") %>
   									<%= submit_tag("Search") %>
 								<% end %>
 							</li>

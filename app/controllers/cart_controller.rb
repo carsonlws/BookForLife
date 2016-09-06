@@ -1,9 +1,8 @@
 class CartController < ApplicationController
-
+  before_action :read_cart, only: [:show, :add_item, :remove_book]
+  after_action :write_cart, only: [:add_item, :clear_cart, :remove_book]
 
   def show
-    read_cart
-
     @books = []
     @cart.each do |book_id,quantity|
 
@@ -16,20 +15,15 @@ class CartController < ApplicationController
   end
 
   def add_item
-    read_cart
     if @cart[params[:book_id]]
       @cart[params[:book_id]] = @cart[params[:book_id]].to_i + params[:quantity].to_i
     else
       @cart[params[:book_id]] = params[:quantity]
     end
-    # binding.pry
-
-    write_cart
   end
 
   def clear_cart
     @cart = {}
-    write_cart
     redirect_to cart_path
   end
 
@@ -43,6 +37,11 @@ class CartController < ApplicationController
     else
       @cart = {}
     end
+  end
+
+  def remove_book
+    @cart.delete params[:book_id]
+    redirect_to cart_path
   end
 
   # @cart = {

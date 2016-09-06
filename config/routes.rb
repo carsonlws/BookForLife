@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :addresses
   # devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :orders
@@ -20,5 +21,12 @@ Rails.application.routes.draw do
   get :cart, to: 'cart#show'
   patch :add_item_to_cart, to: 'cart#add_item'
   delete :clear_cart, to:'cart#clear_cart'
+  delete :remove_book, to:'cart#remove_book'
+
+
+  get :shipping, to: 'shipping#index'
+  get :order_confirmation, to: 'shipping#order_confirmation'
+
+
 
 end
