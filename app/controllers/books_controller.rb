@@ -6,6 +6,7 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     if params[:query].present?
+        Book.reindex
         @query = params[:query]
         @books = Book.search(params[:query], page: params[:page])
       else

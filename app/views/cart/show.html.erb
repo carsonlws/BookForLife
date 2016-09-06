@@ -1,16 +1,29 @@
-<%= link_to "Clear cart", clear_cart_path, method: :delete %><br>
+<div class="container">
+  <div class="col-md-12">
 
+      <% @books.each do |book| %>
+      <div class="row thumbnail">
+          <div class="col-sm-4 col-lg-4 col-md-4">
+              <%= image_tag book.image, class: "list-img" %> <br/>
+          </div>
+        <div class="caption">
+          <div class="col-sm-8 col-lg-8 col-md-8">
+            <%= link_to book.title, book %> <br/>
+            <%= book.author %> <br/>
+            Quantity: <%= book.quantity %> <br/>
+            RM <%= book.price %> <br/>
+            <%= link_to "Remove Book", remove_book_path(book_id: book.id), method: :delete %>
 
-<% @books.each do |book| %>
-  <div class="col-sm-4 col-lg-4 col-md-4">
-    <div class="thumbnail">
-      <img src="http://placehold.it/320x150" alt="">
-      <div class="caption">
-          <%= link_to book.title, book %> <br/>
-          <%= book.author %> <br/>
-          <%= book.image %> <br/>
-          RM <%= book.price %> <br/>
         </div>
-        </div>
-        </div>
-<% end %>
+      </div>
+    </div>
+      <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row text-center">
+<%= link_to "Clear cart ", clear_cart_path, method: :delete %>|
+<%= link_to "Checkout", shipping_path %></br>
+  </div>
+</div>
