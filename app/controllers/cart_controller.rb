@@ -1,4 +1,5 @@
 class CartController < ApplicationController
+
   before_action :read_cart, only: [:show, :add_item, :remove_book]
   after_action :write_cart, only: [:add_item, :clear_cart, :remove_book]
 
