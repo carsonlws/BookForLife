@@ -12,7 +12,6 @@ class BooksController < ApplicationController
       else
         @books = Book.all.page params[:page]
     end
-
   end
 
   # GET /books/1

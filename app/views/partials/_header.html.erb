@@ -24,16 +24,13 @@
 							      </li>
 								</li>
 								<li>
-										<a href="/ordered_books">My Order</a>
-								</li>
-								<li>
 										<a href="/books">All Books</a>
 								</li>
 								<li>
 										<a href="/admin">Admin</a>
 								</li>
                 <li>
-                    <%= link_to "Cart", cart_path %>
+									<li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
                 </li>
 						</ul>
 
@@ -42,7 +39,6 @@
 								<%= form_tag books_path, class: "navbar-search navbar-form", method: :get do %>
 										<%= label_tag(:query, "") %>
   									<%= text_field_tag(:query, @query, placeholder: "Search 1+ Million Books") %>
-  									<%= submit_tag("Search") %>
 								<% end %>
 							</li>
 						</ul>

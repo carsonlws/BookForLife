@@ -13,10 +13,6 @@ class CartController < ApplicationController
         quantity
       end
 
-      # book.define_singleton_method(:total_price) do
-      #   "%.2f" % (self.price * quantity.to_i)
-      # end
-
       @books << book
 
       @totalprice += book.price.to_f * book.quantity.to_i
@@ -25,7 +21,13 @@ class CartController < ApplicationController
 
   def add_item
     if @cart[params[:book_id]]
-      @cart[params[:book_id]] = @cart[params[:book_id]].to_i + params[:quantity].to_i
+      quantity = params[:quantity].to_i
+      oldquantity = @cart[params[:book_id]].to_i
+      @cart[params[:book_id]] = quantity + oldquantity
+
+      # @cart[params[:book_id]] = @cart[params[:book_id]].to_i + params[:quantity].to_i
+      # flash[:success] = "Book has been added to shopping cart."
+
     else
       @cart[params[:book_id]] = params[:quantity]
     end
@@ -57,6 +59,7 @@ class CartController < ApplicationController
 
   def remove_book
     @cart.delete params[:book_id]
+    flash[:success] = "Book deleted from shopping cart."
     redirect_to cart_path
   end
 end

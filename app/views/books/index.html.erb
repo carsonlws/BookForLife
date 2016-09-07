@@ -1,4 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
 
+        <p>
+          <h1 style = text-align:center>All Books </h1>
+        </p>
+        <% @books.each do |book| %>
+          <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+              <div class="caption">
+                    <%= image_tag book.image %> <br/>
+                    <%= link_to book.title, book_path(book) %> <br/>
+                    <%= book.author %> <br/>
+                    <%= book.category.genre %> <br/>
+                    <%= book.description %> <br/>
+                    <%= number_to_currency(book.price, unit: "RM ") %> <br/>
+                    <%= link_to 'Book Details', book_path(book), class:"btn btn-info btn-sm" %>
+                    <%= link_to 'Add To Cart', add_item_to_cart_path(book_id: book, quantity: 1), method: :patch, class:"btn btn-info btn-sm" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
+
+<!--
 <table>
   <thead>
     <tr>
@@ -20,7 +47,7 @@
         <td><%= book.author %></td>
         <td><%= book.category_id %></td>
         <td><%= book.description %></td>
-        <td><%= book.price %></td>
+        <td><%= number_to_currency(book.price, unit: "RM ") %></td>
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
         <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,6 +58,5 @@
 
 <br>
 
-    </div>
-  </div>
-</div>
+
+</div> -->
